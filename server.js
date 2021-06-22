@@ -5,10 +5,24 @@ const port = 3001
 // for handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
+
 // for routes
 //const routes = require('./controllers')
 
-
+// express session
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// sets up express.js session and connects to Sequelize database
+// //const sess = {
+//     secret: 'secret',
+//     cookie: {},// can add sess length here
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new SequelizeStore({
+//       db: sequelize
+//     })
+// };
+  
 
 // turns on handle bars
 app.engine('handlebars', hbs.engine);
@@ -21,6 +35,9 @@ app.get('/', (req,res) => {
 
 // turn on routes
 //app.use(routes);
+
+// turns on sequelize session
+// app.use(session(sess));
 
 // turns on local server
 app.listen(port, () => {
