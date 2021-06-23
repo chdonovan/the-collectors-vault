@@ -19,6 +19,14 @@ Item.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        inventory: {
+            type: DataTypes.INTEGER,
+            allowNull:false,
+            default: 1,
+            validate: {
+                isNumeric: true
+            }
+        },
         category_id: {
             type: DataTypes.INTEGER,
             references: {
