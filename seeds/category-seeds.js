@@ -11,12 +11,6 @@ const categoryData = [
         category_name: 'Comic Books',
     },
     {
-        category_name: 'Manga',
-    },
-    {
-        category_name: 'Classic Car Models',
-    },
-    {
         category_name: 'Vinyl Records',
     },
 ];
