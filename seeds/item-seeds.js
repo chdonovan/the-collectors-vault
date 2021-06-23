@@ -57,6 +57,8 @@ const itemData = [
         category_name: 4,
         user_id: 4,
     },
-    
+];
 
-]
+const seedItems = () => Item.bulkCreate(itemData);
+
+module.exports = seedItems;
