@@ -30,7 +30,7 @@ app.set('view engine', 'handlebars');
 
 // test console log
 app.get('/', (req,res) => {
-    res.send('Hello!')
+    res.send('whats goin on??!')
 })
 
 // turn on routes
