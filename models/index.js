@@ -2,14 +2,14 @@
 const Item = require('./Item');
 const User = require('./User');
 const Category = require('./Category');
-const { Model } = require('sequelize/types');
+//const { Model } = require('sequelize/types');
 
 //create associations
 Item.belongsTo(User,{
     foreignKey:'user_id'
 });
 
-User.hasMany(Items, {
+User.hasMany(Item, {
     foreignKey: 'user_id',    
 });
 
@@ -22,4 +22,4 @@ Category.hasMany(Item, {
 });
 
 //export models
-Model.exports = { Item, User, Category };
+module.exports = { Item, User, Category };
