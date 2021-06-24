@@ -12,13 +12,14 @@ class User extends Model {
 }
 
 //create User model
+console.log('before users created');
 User.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncreament: true
+            autoIncrement: true
         },
         username: {
             type: DataTypes.STRING,
@@ -59,5 +60,6 @@ User.init(
         modelName: 'user'
     }
 );
+console.log('after users created');
 
 module.exports = User;
