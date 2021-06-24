@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 // Get User by ID
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
         where: {
@@ -25,8 +25,7 @@ router.get('/', (req, res) => {
                 model: Item,
                 attributes: ['item_name', 'item_description', 'inventory'],
                 include: {
-                    model: Category,
-                    attributes: ['category_name']
+                    model: Category
                 }
             }
         ]
