@@ -19,7 +19,11 @@ Category.init(
     {
         sequelize,
         timestamps: false,
+<<<<<<< HEAD
         freezeTablesName: true,
+=======
+        freezeTableName: true,
+>>>>>>> develop
         underscored: true,
         modelName: 'category'
     }

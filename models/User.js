@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connections');
 
 //Extend from sequelize model
 
@@ -12,13 +12,14 @@ class User extends Model {
 }
 
 //create User model
+console.log('before users created');
 User.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncreament: true
+            autoIncrement: true
         },
         username: {
             type: DataTypes.STRING,
@@ -43,12 +44,12 @@ User.init(
     {
         hooks: {
             async beforeCreate(newUserData) {
-                newUsserData.password = await bcrypt.hash(newUserData.password, 10);
-                return updatedUserData;
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
             },
 
             async beforeUpdate(updatedUserData) {
-                updatedUserData.password = await bcrypt.hash(updatedUser.password, 10);
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
             }
         },
@@ -59,5 +60,6 @@ User.init(
         modelName: 'user'
     }
 );
+console.log('after users created');
 
 module.exports = User;
