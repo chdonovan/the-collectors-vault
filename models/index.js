@@ -8,6 +8,9 @@ const Item = require('./Item');
 
 //create associations
 Item.belongsTo(Category, {
+    through: Category,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
     foreignKey: 'category_id',
 });
 
@@ -16,11 +19,14 @@ Category.hasMany(Item, {
 });
 
 Item.belongsTo(User,{
+    through: User,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
     foreignKey:'user_id'
 });
 
 User.hasMany(Item, {
-    foreignKey: 'user_id',    
+    foreignKey: 'user_id',
 });
 
 
