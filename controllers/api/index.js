@@ -7,7 +7,6 @@ const categoryRoutes = require('./category-routes');
 router.use('/users', userRoutes);
 router.use('/items', itemRoutes);
 router.use('/categories', categoryRoutes);
-const apiRoutes = require('./api');
-router.use('/api', apiRoutes);
+
 
 module.exports = router;
