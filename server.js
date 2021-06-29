@@ -1,7 +1,8 @@
 // for local server
 const express = require('express');
 const app = express();
-const port = 3001
+const PORT = process.env.PORT || 3001;
+const path = require('path');
 // for handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
@@ -11,6 +12,7 @@ const routes = require('./controllers')
 
 // express session
 const session = require('express-session');
+//const { sequelize } = require('./models/User');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // sets up express.js session and connects to Sequelize database
 const sess = {
@@ -32,16 +34,18 @@ app.set('view engine', 'handlebars');
 app.get('/', (req,res) => {
     res.send('whats goin on??!')
 })
-app.use(express.json());
+
 // turn on routes
 app.use(routes);
-
-
 
 // turns on sequelize session
 app.use(session(sess));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // turns on local server
-app.listen(port, () => {
-    console.log(`listening on port ${port}`)
-})
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+});
