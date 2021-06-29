@@ -1,0 +1,38 @@
+{{#if items.length}}
+<section>
+    <h2>Your Collection</h2>
+    <ol>
+        {{#each items as |item|}}
+        <li>
+            {{!-- add helper --}}
+            {{> item-info item}}
+            <a href="/dashboard/edit/{{item.id}}" class="edit-link">Edit Item</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
+
+<section>
+    <h2>Add to your collection!</h2>
+
+    <form class="new-item-form">
+        <div>
+            <label for="item-title">Title</label>
+            <input type="text" id="item-title" name="item-title" />
+        </div>
+        <div>
+            <label for="item-text">Item Description</label>
+            <input type="text" id="item-text" name="item-text" />
+        </div>
+        <div>
+            <label for="item-inventory">Inventory</label>
+            <input type="text" id="item-inventory" name="item-inventory" />
+        </div>
+        <button type="submit" class="btn">Create</button>
+    </form>
+</section>
+
+
+
+<script src="/javascript/add-item.js"></script>

@@ -1,16 +1,14 @@
 // for local server
+const path = require('path');
 const express = require('express');
-const app = express();
-const port = 3001
-// for handlebars
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
-
-// for routes
-const routes = require('./controllers')
-
-// express session
 const session = require('express-session');
+const exphbs = require('express-handlebars');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+const sequelize = require('./config/connections');
+// const { sequelize } = require('./models/User');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // sets up express.js session and connects to Sequelize database
 const sess = {
@@ -22,26 +20,30 @@ const sess = {
       db: sequelize
     })
 };
-  
-
-// turns on handle bars
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
-// test console log
-// app.get('/', (req,res) => {
-//     res.send('whats goin on??!')
-// })
-app.use(express.json());
-// turn on routes
-app.use(routes);
-
-
 
 // turns on sequelize session
 app.use(session(sess));
+  
+const hbs = exphbs.create({})
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+// for routes
+
+// const routes = require('./controllers')
+// express session
+// turns on handle bars
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+// turn on routes
+// app.use(routes);
+
+app.use(require('./controllers/'));
+
 
 // turns on local server
-app.listen(port, () => {
-    console.log(`listening on port ${port}`)
-})
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+});

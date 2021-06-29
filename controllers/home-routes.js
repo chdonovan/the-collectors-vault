@@ -1,10 +1,7 @@
 const router = require('express').Router();
-// const { User, Item, Category } = require('../models');
+const { User, Item, Category } = require('../models');
 
-router.get('/', (req, res) => {
-  res.render('homepage');
-});
-// get all posts for homepage
+// get all items for homepage
 router.get('/', (req, res) => {
     console.log('======================');
     Item.findAll({
@@ -27,8 +24,8 @@ router.get('/', (req, res) => {
         }
       ]
     })
-      .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
+      .then(dbItemData => {
+        const items = dbItemData.map(item => item.get({ plain: true }));
   
         res.render('homepage', {
           items,

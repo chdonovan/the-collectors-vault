@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-//
-=======
 const router = require('express').Router();
 
 const userRoutes = require('./user-routes.js');
@@ -13,4 +10,3 @@ router.use('/categories', categoryRoutes);
 
 
 module.exports = router;
->>>>>>> develop
