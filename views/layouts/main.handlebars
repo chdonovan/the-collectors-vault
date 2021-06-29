@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Collector's Vault</title>
   <!-- Bootstrap CSS -->
-  {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
+  {{!--
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
@@ -20,22 +22,21 @@
       <div class="collapse navbar" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-
+            <a href="/" class="nav-link active">Home</a>
           </li>
+          {{#if loggedIn}}
           <li class="nav-item">
-            {{#if loggedIn}}
             <a class="nav-link" href="/dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
-            <button id="logout" class="btn-no-style">logout</button>
-            <a href="/login">login</a>
-            {{else}}
+            <button id="logout" class="btn-no-style">Logout</button>
+          </li>
+          {{else}}
           <li class="nav-item">
-            <button id="login" class="btn-no-style" href="/login">Login</button>
+            <a href="/login">login</a>
+            {{!-- <button id="login" class="btn-no-style" href="/login">Login</button> --}}
           </li>
           {{/if}}
-          </li>
         </ul>
       </div>
     </div>
