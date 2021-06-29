@@ -27,8 +27,10 @@ router.get('/', withAuth, (req, res) => {
         ]
     })
     .then(dbItemData => {
-        const items = dbItemData.map(item = item.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        const items = dbItemData.map(item =>item.get({ plain: true}));
+        res.render('dashboard', {
+            items,
+            loggedIn: true});
     })
     .catch(err => {
         console.log(err);
