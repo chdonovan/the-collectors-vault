@@ -31,9 +31,9 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // test console log
-// app.get('/', (req,res) => {
-//     res.send('whats goin on??!')
-// })
+app.get('/', (req,res) => {
+    res.send('whats goin on??!')
+})
 
 // turn on routes
 app.use(routes);
