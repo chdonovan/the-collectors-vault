@@ -31,10 +31,17 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // test console log
+<<<<<<< HEAD
+// app.get('/', (req,res) => {
+//     res.send('whats goin on??!')
+// })
+app.use(express.json());
+=======
 app.get('/', (req,res) => {
     res.send('whats goin on??!')
 })
 
+>>>>>>> 14ca168c0821334fd0e91250096622138e513439
 // turn on routes
 app.use(routes);
 
