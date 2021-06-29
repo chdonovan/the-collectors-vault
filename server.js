@@ -1,7 +1,8 @@
 // for local server
 const express = require('express');
 const app = express();
-const port = 3001
+const PORT = process.env.PORT || 3001;
+const path = require('path');
 // for handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
@@ -38,8 +39,10 @@ app.use(routes);
 
 // turns on sequelize session
 app.use(session(sess));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // turns on local server
-app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
 })
