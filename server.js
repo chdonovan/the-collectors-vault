@@ -12,7 +12,7 @@ const routes = require('./controllers')
 
 // express session
 const session = require('express-session');
-//const { sequelize } = require('./models/User');
+const { sequelize } = require('./models/User');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // sets up express.js session and connects to Sequelize database
 const sess = {
