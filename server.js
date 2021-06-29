@@ -32,9 +32,11 @@ app.set('view engine', 'handlebars');
 app.get('/', (req,res) => {
     res.send('whats goin on??!')
 })
-
+app.use(express.json());
 // turn on routes
 app.use(routes);
+
+
 
 // turns on sequelize session
 app.use(session(sess));
