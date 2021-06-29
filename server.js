@@ -12,7 +12,7 @@ const routes = require('./controllers')
 
 // express session
 const session = require('express-session');
-//const { sequelize } = require('./models/User');
+const { sequelize } = require('./models/User');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // sets up express.js session and connects to Sequelize database
 const sess = {
@@ -31,24 +31,17 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // test console log
-<<<<<<< HEAD
 // app.get('/', (req,res) => {
 //     res.send('whats goin on??!')
 // })
 app.use(express.json());
-=======
-app.get('/', (req,res) => {
-    res.send('whats goin on??!')
-})
-
->>>>>>> 14ca168c0821334fd0e91250096622138e513439
 // turn on routes
 app.use(routes);
 
 // turns on sequelize session
 app.use(session(sess));
 
-app.use(express.json());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
