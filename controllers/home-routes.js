@@ -1,6 +1,9 @@
-// const router = require('express').Router();
+const router = require('express').Router();
 // const { User, Item, Category } = require('../models');
 
+router.get('/', (req, res) => {
+  res.render('homepage');
+});
 // get all posts for homepage
 router.get('/', (req, res) => {
     console.log('======================');
@@ -38,14 +41,14 @@ router.get('/', (req, res) => {
       });
   });
     
-  router.get('/login', (req, res) => {
+router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
       res.redirect('/');
       return;
     }
   
     res.render('login');
-  });
+});
   
-  module.exports = router;
+module.exports = router;
   
