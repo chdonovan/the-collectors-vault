@@ -42,22 +42,26 @@ router.get('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
-
+router.post('/test', (req, res) => {
+    console.log(req.body);
+    res.send(req.body);
+})
 // POST /api/users
 router.post('/', (req, res) => {
+    console.log(req.body);
     User.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
     })
         .then(dbUserData => {
-            req.session.save(() => {
-                req.session.user_id = dbUserData.id;
-                req.session.username = dbUserData.username;
-                req.session.loggedIn = true;
+            // req.session.save(() => {
+            //     req.session.user_id = dbUserData.id;
+            //     req.session.username = dbUserData.username;
+            //     req.session.loggedIn = true;
             
-                res.json(dbUserData);
-            });
+            //     res.json(dbUserData);
+            // });
             res.json(dbUserData);
         })
         .catch(err => {
