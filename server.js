@@ -12,6 +12,7 @@ const routes = require('./controllers')
 
 // express session
 const session = require('express-session');
+//const { sequelize } = require('./models/User');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // sets up express.js session and connects to Sequelize database
 const sess = {
@@ -30,19 +31,21 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // test console log
-app.get('/', (req,res) => {
-    res.send('whats goin on??!')
-})
+// app.get('/', (req,res) => {
+//     res.send('whats goin on??!')
+// })
 
 // turn on routes
 app.use(routes);
 
 // turns on sequelize session
 app.use(session(sess));
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // turns on local server
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`)
-})
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+});
