@@ -11,8 +11,7 @@ html {
     color:white;
 } */
 
-
-* {
+/* * {
     box-sizing: border-box;
   }
   
@@ -177,11 +176,11 @@ html {
   
   .new-post-form input {
     width: 300px;
-  }
+  } */
   
-  .edit-post-form {
+  /* .edit-post-form {
     margin-bottom: 5%;
-  }
+  } */
   
   footer {
     border-top: 1px solid #ccc;

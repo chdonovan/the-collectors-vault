@@ -35,13 +35,14 @@ app.set('view engine', 'handlebars');
 // turns on handle bars
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 // turn on routes
 // app.use(routes);
 
 app.use(require('./controllers/'));
 
+app.use(require('./controllers/'));
 
 // turns on local server
 sequelize.sync({ force: false }).then(() => {

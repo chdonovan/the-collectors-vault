@@ -62,7 +62,6 @@ router.post('/', (req, res) => {
             
                 res.json(dbUserData);
             });
-            res.json(dbUserData);
         })
         .catch(err => {
             console.log(err);
