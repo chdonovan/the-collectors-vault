@@ -4,7 +4,6 @@
     <ol>
         {{#each items as |item|}}
         <li>
-            {{!-- add helper --}}
             {{> item-info item}}
             <a href="/dashboard/edit/{{item.id}}" class="edit-link">Edit Item</a>
         </li>
@@ -30,17 +29,15 @@
             <input type="text" id="item-inventory" name="item-inventory" />
         </div>
         <div>
+            <label for="cars">Choose a category:</label>
             <select name="category" id="category">
-                <option value="pokemon-cards">1. Pokemon Cards</option>
-                <option value="sports-cards">2. Sports Cards</option>
-                <option value="comic-books">3. Comic Books </option>
-                <option value="vinyl-records">4. Vinyl Records</option>
+                <option value="1">1. Pokemon Cards</option>
+                <option value="2">2. Sports Cards</option>
+                <option value="3">3. Comic Books </option>
+                <option value="4">4. Vinyl Records</option>
             </select>
         </div>
         <button type="submit" class="btn">Create</button>
-        <label for="cars">Choose a category:</label>
-
-
     </form>
 </section>
 

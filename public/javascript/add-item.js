@@ -1,21 +1,29 @@
+// const app = require('../../server');
+// const router = require('express').Router();
 
-async function newFormHandler(event) {
+
+// app.use(session(
+    async function newFormHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('input[name="item-title"]').value;
+    const item_name = document.querySelector('input[name="item-title"]').value;
     const item_description = document.querySelector('input[name="item-text"]').value;
     const inventory = document.querySelector('input[name="item-inventory"]').value;
     // const user_id = req.session.user_id;
-    const category_id = document.querySelector('select[name="category"]').value.toString().split('/')[0];
+    const category_name = document.querySelector('select[name="category"]').value;
+    // .value.toString().split('/')[0];
 
-    const response = await fetch(`/api/categories`, {
+    // console.log(category_id);
+    // console.log(req.session);
+
+    const response = await fetch(`/api/items`, {
         method: 'POST',
         body: JSON.stringify({
-            title,
+            item_name,
             item_description,
             inventory,
-            user_id: req.session.user_id,
-            category_id
+            // user_id: req.session.user_id,
+            category_name
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -28,5 +36,8 @@ async function newFormHandler(event) {
         alert(response.statusText);
     }
 }
+// ));
+
 
 document.querySelector('.new-item-form').addEventListener('submit', newFormHandler);
+// module.exports = router;
