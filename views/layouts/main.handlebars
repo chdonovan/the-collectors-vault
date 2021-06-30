@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Collector's Vault</title>
+<<<<<<< HEAD
   <!-- Bootstrap CSS -->
   {{!--
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -41,6 +42,51 @@
       </div>
     </div>
   </nav>
+=======
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  {{!-- <div class="navbar-brand">
+    <img src="logo.PNG" width="112" height="28">
+  </div> --}}
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a href="/" class="navbar-item">
+        Home
+      </a>
+      {{#if loggedIn}}
+      <a href="/dashboard" class="navbar-item">
+        Dashboard
+      </a>
+      {{/if}}
+    </div>
+  </div>
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        {{#if loggedIn}}
+        <a id="logout" class="button is-light">
+          Logout
+        </a>
+        {{else}}
+        <a href="/login" class="button is-light">
+          Log in
+        </a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>
+
+<body>
+>>>>>>> develop
   <main>
     {{{ body }}}
   </main>
@@ -49,4 +95,8 @@
   {{/if}}
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> develop

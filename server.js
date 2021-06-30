@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers/'));
 
+app.use(require('./controllers/'));
 
 // turns on local server
 sequelize.sync({ force: false }).then(() => {
