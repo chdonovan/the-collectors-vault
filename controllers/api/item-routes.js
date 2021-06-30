@@ -1,12 +1,7 @@
 const router = require('express').Router();
 const { User, Item, Category } = require('../../models');
-<<<<<<< HEAD
-// const multer = require('multer');
-// const upload = multer({dest: '/uploads/'});
-=======
 //const multer = require('multer');
 //const upload = multer({dest: '/uploads/'});
->>>>>>> 23ebe0565471330a528ddfb1d4c10854baebe0cf
 
 // GET All Items /api/collections
 router.get('/', (req, res) => {
