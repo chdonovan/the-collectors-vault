@@ -35,26 +35,15 @@ app.set('view engine', 'handlebars');
 // turns on handle bars
 
 app.use(express.json());
-<<<<<<< HEAD
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 // turn on routes
 // app.use(routes);
 
 app.use(require('./controllers/'));
-=======
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
-// turn on routes
-// app.use(routes);
->>>>>>> fd1c62d4126f3df833543759d48e5078493c2af7
 
 app.use(require('./controllers/'));
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fd1c62d4126f3df833543759d48e5078493c2af7
 // turns on local server
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
