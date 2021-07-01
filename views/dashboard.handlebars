@@ -54,14 +54,15 @@
     </div>
 </div>
 
-<button class="button is-link is-medium modal-button" id="lanuchModal">
-    Add to your collection!
-</button>
+
 
 
 {{#if items.length}}
 <section>
     <h2 class="title is-2">Your Collection</h2>
+    <button class="button is-link modal-button" id="lanuchModal">
+        Add to your collection!
+    </button>
     <div class="columns is-multiline is-desktop">
         {{#each items as |item|}}
         <div class="column is-3">
