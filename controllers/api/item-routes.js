@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Item, Category } = require('../../models');
+const withAuth = require('../../utils/auth');
 //const multer = require('multer');
 //const upload = multer({dest: '/uploads/'});
 
@@ -17,9 +18,13 @@ router.get('/', (req, res) => {
             {
                 model: Category,
                 attributes: ['id', 'category_name']
+            },
+            {
+                model: User,
+                attributes: ['username']
             }
         ]
-        })
+    })
         .then(dbItemData => res.json(dbItemData))
         .catch(err => {
             console.log(err);
@@ -39,55 +44,22 @@ router.get('/:id', (req, res) => {
             'item_description',
             'inventory',
             'category_id'
+        ],
+        include: [
+            {
+                model: Category,
+                attributes: ['category_name']
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
         ]
     })
-    .then(dbItemData => {
-        if (!dbItemData) {
-            res.status(404).json({ message: 'No item found with this id' });
-            return;
-        }
-        res.json(dbItemData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
-
-// POST Create an Item /api/items
-router.post('/', (req, res) => {
-    Item.create({
-        item_name: req.body.item_name,
-        item_description: req.body.item_description,
-        inventory: req.body.inventory
-    })
         .then(dbItemData => {
-            // req.session.save(() => {
-            //     req.session.user_id = dbUserData.id;
-            //     req.session.username = dbUserData.username;
-            //     req.session.loggedIn = true;
-            
-            //     res.json(dbUserData);
-            // });
-            res.json(dbItemData)
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-// PUT Update Items by ID /api/items/1
-router.put('/:id', (req, res) => {
-    Item.update(req.body, {
-        where: {
-            id: req.params.id
-        }
-    })
-        .then(dbItemData => { 
-            if (!dbItemData[0]) {
-            res.status(404).json({ message: 'No item found with this id' });
-            return;
+            if (!dbItemData) {
+                res.status(404).json({ message: 'No item found with this id' });
+                return;
             }
             res.json(dbItemData);
         })
@@ -95,11 +67,69 @@ router.put('/:id', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-        console.log(req.body);
+});
+
+// POST Create an Item /api/items
+router.post('/', withAuth, (req, res) => {
+    Item.create({
+        item_name: req.body.item_name,
+        item_description: req.body.item_description,
+        inventory: req.body.inventory,
+        category_id: req.body.category_id,
+        user_id: req.session.user_id
+    })
+        .then(dbItemData =>
+            // req.session.save(() => {
+            //     req.session.user_id = dbUserData.id;
+            //     req.session.username = dbUserData.username;
+            //     req.session.loggedIn = true;
+
+            //     res.json(dbUserData);
+            // });
+            res.json(dbItemData))
+        // })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+// PUT Update Items by ID /api/items/1
+router.put('/:id', withAuth, (req, res) => {
+    Item.update(
+        {
+            item_name: req.body.item_name,
+            item_description: req.body.item_description,
+            inventory: req.body.inventory,
+            category_name: category_name
+        },
+        {
+            where: {
+                id: req.params.id
+            },
+            include: [
+                {
+                    model: Category,
+                    attributes: ['username']
+                }
+            ]
+        },
+        )
+        .then(dbItemData => {
+            if (!dbItemData) {
+                res.status(404).json({ message: 'No item found with this id' });
+                return;
+            }
+            res.json(dbItemData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // DELETE Delete Items /api/items/1
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Item.destroy({
         where: {
             id: req.params.id
@@ -107,8 +137,8 @@ router.delete('/:id', (req, res) => {
     })
         .then(dbItemData => {
             if (!dbItemData) {
-            res.status(404).json({ message: 'No item found with this id' });
-            return;
+                res.status(404).json({ message: 'No item found with this id' });
+                return;
             }
             res.json(dbItemData);
         })
