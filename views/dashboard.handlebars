@@ -12,43 +12,74 @@
     </ol>
 </section>
 {{/if}}
+{{!-- <p>
+<button class="button is-primary is-large modal-button" data-target="modal-ter" aria-haspopup="true">
+    Add to your collection!
+</button>
+</p> --}}
 
-<section>
-    <h1 class="title is-1">Add to your collection!</h1>
-
-    <form class="new-item-form">
-        <div class="field">
-            <label class="label" for="item-title">Title</label>
-            <div class="control">
-                <input class="input" type="text" id="item-title" name="item-title" />
+<div id="modal-ter" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Add to your collection!</p>
+            <button class="modal-close delete" aria-label="close">
+            </button>
+        </header>
+        <section class="modal-card-body">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <form class="new-item-form">
+                        <div class="field">
+                            <label class="label" for="item-title">Title</label>
+                            <div class="control">
+                                <input class="input" type="text" id="item-title" name="item-title" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="item-text">Item Description</label>
+                            <div class="control">
+                                <input class="input" type="text" id="item-text" name="item-text" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="item-inventory">Inventory</label>
+                            <div class="control">
+                                <input class="input" type="text" id="item-inventory" name="item-inventory" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Category</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="category" id="category">
+                                        <option value="1">1. Pokemon Cards</option>
+                                        <option value="2">2. Sports Cards</option>
+                                        <option value="3">3. Comic Books </option>
+                                        <option value="4">4. Vinyl Records</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control">
+                                <button class="button is-link" type="submit" class="btn">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <label class="label" for="item-text">Item Description</label>
-            <div class="control">
-                <input class="input" type="text" id="item-text" name="item-text" />
-            </div>
-        </div>
-        <div class="field">
-            <label class="label" for="item-inventory">Inventory</label>
-            <div class="control">
-                <input class="input" type="text" id="item-inventory" name="item-inventory" />
-            </div>
-        </div>
-        <div class="select">
-                <select name="category" id="category">
-                    <option value="1">1. Pokemon Cards</option>
-                    <option value="2">2. Sports Cards</option>
-                    <option value="3">3. Comic Books </option>
-                    <option value="4">4. Vinyl Records</option>
-                </select>
-        </div>
-        <div class="control">
+        </section>
+        {{!-- <footer class="control modal-card-foot">
             <button class="button is-link" type="submit" class="btn">Create</button>
-        </div>
-    </form>
-</section>
+        </footer> --}}
+    </div>
+</div>
+
+<button class="button is-link is-medium modal-button" id="lanuchModal" >
+    Add to your collection!
+</button>
+
 
 
 
 <script src="/javascript/add-item.js"></script>
+<script src="/javascript/modal.js"></script>
