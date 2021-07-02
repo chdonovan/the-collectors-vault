@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Item, Category, User } = require('../models');
+const { truncate } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -76,6 +77,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 router.get('/', (req, res) => {
     Category.findAll({
         attributes: ['id', 'category_name']
@@ -93,4 +95,6 @@ router.get('/', (req, res) => {
 
 });
 
+=======
+>>>>>>> 69bb14b5034d1e7e125811ab185fcef5999c50d5
 module.exports = router;
