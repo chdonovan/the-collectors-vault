@@ -77,4 +77,24 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+<<<<<<< HEAD
+router.get('/', (req, res) => {
+    Category.findAll({
+        attributes: ['id', 'category_name']
+    })
+    .then(dbCategoryData => {
+        const categories = dbCategoryData.map(category =>category.get({ plain: true}));
+        res.render('dashboard', {
+            categories,
+            loggedIn: true});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+
+});
+
+=======
+>>>>>>> 69bb14b5034d1e7e125811ab185fcef5999c50d5
 module.exports = router;

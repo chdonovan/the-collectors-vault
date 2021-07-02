@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "./public/uploads/");
+        cb(null, "./uploads/");
     },
     filename: function (req, file, cb) {
         cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
@@ -105,7 +105,8 @@ router.post('/', upload.single('item_image'), (req, res) => {
         inventory: req.body.inventory,
         category_id: req.body.category_id,
         user_id: req.session.user_id,
-        // item_image: req.file.path
+        // item_image: req.body.item_image
+        item_image: req.file.path
     })
         .then(dbItemData =>
             // req.session.save(() => {
@@ -130,7 +131,7 @@ router.put('/:id', withAuth, (req, res) => {
             item_name: req.body.item_name,
             item_description: req.body.item_description,
             inventory: req.body.inventory,
-            category_name: category_name
+            category_id: req.body.category_id
         },
         {
             where: {

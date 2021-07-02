@@ -3,13 +3,13 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Add to your collection!</p>
-            <button class="modal-close delete" aria-label="close">
+            <button class="modal-close delete is-large" aria-label="close">
             </button>
         </header>
         <section class="modal-card-body">
             <div class="columns">
                 <div class="column is-half is-offset-one-quarter">
-                    <form class="new-item-form">
+                    <form id="form" class="new-item-form">
                         <div class="field">
                             <label class="label" for="item-title">Title</label>
                             <div class="control">
@@ -31,33 +31,31 @@
                         <div class="field">
                             <label class="label">Category</label>
                             <div class="control">
-                                <div class="select">
-                                    <select name="category" id="category">
-                                        <option value="1">1. Pokemon Cards</option>
-                                        <option value="2">2. Sports Cards</option>
-                                        <option value="3">3. Comic Books </option>
-                                        <option value="4">4. Vinyl Records</option>
-                                    </select>
-                                </div>
+                                <input class="input" type="text" name="category" id="category"
+                                    placeholder="Reference Categories Page" />
                             </div>
-                            <div class="field">
-                                <form action="/profile" method="post" enctype="multipart/form-data">
-                                    <input type="file" name="avatar" />
-                                </form>
-                            </div>
-                            <div class="control">
-                                <button class="button is-link" type="submit" class="btn">Create</button>
-                            </div>
-
                         </div>
-                    </form>
+                        <div class="field">
+                            <label for='files'>Select File</label>
+                            <input id='files' type='file' single>
+                            {{!-- <form action="/profile" method="post" enctype="multipart/form-data">
+                                <input type="file" name="avatar" />
+                            </form> --}}
+                        </div>
+                        {{!-- <button class="submit-btn" type='submit'>Upload</button> --}}
+                        <div class="control">
+                            <button class="button is-link" type="submit" class="btn">Create</button>
+                        </div>
+
                 </div>
+                </form>
             </div>
-        </section>
-        {{!-- <footer class="control modal-card-foot">
-            <button class="button is-link" type="submit" class="btn">Create</button>
-        </footer> --}}
     </div>
+    </section>
+    {{!-- <footer class="control modal-card-foot">
+        <button class="button is-link" type="submit" class="btn">Create</button>
+    </footer> --}}
+</div>
 </div>
 
 
@@ -65,6 +63,7 @@
 <button class="button is-link modal-button" id="lanuchModal">
     Add to your collection!
 </button>
+
 {{#if items.length}}
 <section>
     <h2 class="title is-2">Your Collection</h2>
@@ -74,7 +73,8 @@
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        <img src="https://localhost:3001/uploads/2021-07-02T12-08-21.874ZShiro.jpg"
+                            alt="Placeholder image">
                     </figure>
                 </div>
                 <div class="card-content">
@@ -95,7 +95,7 @@
                         <br>
                         Inventory: {{inventory}}
                         <br>
-                        <time datetime="2016-1-1">{{created_at}}</time>
+                        <time>{{created_at}}</time>
                     </div>
                 </div>
                 <footer class="card-footer">
