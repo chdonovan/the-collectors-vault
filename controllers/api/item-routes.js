@@ -1,8 +1,32 @@
 const router = require('express').Router();
 const { User, Item, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
-//const multer = require('multer');
-//const upload = multer({dest: '/uploads/'});
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./public/uploads/");
+    },
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
 
 // GET All Items /api/collections
 router.get('/', (req, res) => {
@@ -12,7 +36,8 @@ router.get('/', (req, res) => {
             'item_name',
             'item_description',
             'inventory',
-            'category_id'
+            'category_id',
+            'item_image'
         ],
         include: [
             {
@@ -43,7 +68,8 @@ router.get('/:id', (req, res) => {
             'item_name',
             'item_description',
             'inventory',
-            'category_id'
+            'category_id',
+            'item_image'
         ],
         include: [
             {
@@ -70,13 +96,16 @@ router.get('/:id', (req, res) => {
 });
 
 // POST Create an Item /api/items
-router.post('/', withAuth, (req, res) => {
+// withAuth,
+router.post('/', upload.single('item_image'), (req, res) => {
+    console.log(req.file);
     Item.create({
         item_name: req.body.item_name,
         item_description: req.body.item_description,
         inventory: req.body.inventory,
         category_id: req.body.category_id,
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
+        // item_image: req.file.path
     })
         .then(dbItemData =>
             // req.session.save(() => {
@@ -114,7 +143,7 @@ router.put('/:id', withAuth, (req, res) => {
                 }
             ]
         },
-        )
+    )
         .then(dbItemData => {
             if (!dbItemData) {
                 res.status(404).json({ message: 'No item found with this id' });
