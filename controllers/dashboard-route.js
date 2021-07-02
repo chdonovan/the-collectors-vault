@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Item, Category, User } = require('../models');
-const { truncate } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -75,6 +74,23 @@ router.get('/edit/:id', withAuth, (req, res) => {
     .catch(err => {
         res.status(500).json(err);
     });
+});
+
+router.get('/', (req, res) => {
+    Category.findAll({
+        attributes: ['id', 'category_name']
+    })
+    .then(dbCategoryData => {
+        const categories = dbCategoryData.map(category =>category.get({ plain: true}));
+        res.render('dashboard', {
+            categories,
+            loggedIn: true});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+
 });
 
 module.exports = router;

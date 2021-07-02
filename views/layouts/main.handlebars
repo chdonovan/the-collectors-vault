@@ -9,13 +9,13 @@
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
   {{!-- <div class="navbar-brand">
-    <img src="logo.PNG" width="112" height="28">
+    <img src="/assets/logo.PNG" width="112" height="28">
   </div> --}}
 
   <div id="navbarBasicExample" class="navbar-menu">
@@ -26,6 +26,9 @@
       {{#if loggedIn}}
       <a href="/dashboard" class="navbar-item">
         Dashboard
+      </a>
+      <a href="/category" class="navbar-item">
+        Categories
       </a>
       {{/if}}
     </div>

@@ -4,7 +4,7 @@ async function editFormHandler(event) {
     const item_name = document.querySelector('input[name="item-title"]').value.trim();
     const item_description = document.querySelector('input[name="item-text"]').value.trim();
     const inventory = document.querySelector('input[name="item-inventory"]').value.trim();
-    const category_name = document.querySelector('select[name="category"]').value.trim();
+    const category_id = document.querySelector('select[name="category"]').value.trim();
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
@@ -15,7 +15,7 @@ async function editFormHandler(event) {
             item_name,
             item_description,
             inventory,
-            category_name
+            category_id
         }),
         headers: {
             'Content-Type': 'application/json'
