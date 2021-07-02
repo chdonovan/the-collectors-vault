@@ -1,34 +1,51 @@
-// const app = require('../../server');
-// const router = require('express').Router();
+//async 
+const form = document.getElementById("form");
 
-
-// app.use(session(
-    async function newFormHandler(event) {
+function newFormHandler(event) {
     event.preventDefault();
 
-    const item_name = document.querySelector('input[name="item-title"]').value;
-    const item_description = document.querySelector('input[name="item-text"]').value;
-    const inventory = document.querySelector('input[name="item-inventory"]').value;
+    const item_name = document.querySelector('input[name="item-title"]')//.value;
+    const item_description = document.querySelector('input[name="item-text"]')//.value;
+    const inventory = document.querySelector('input[name="item-inventory"]')//.value;
     // const user_id = req.session.user_id;
-    const category_name = document.querySelector('select[name="category"]').value;
-    // .value.toString().split('/')[0];
+    const category_id = document.querySelector('input[name="category"]')//.value;
+    const files = document.getElementById("files");
 
-    // console.log(category_id);
-    // console.log(req.session);
+    // var path = document.querySelector('input[name="avatar"]').value
+    // const item_image = path.replace(/^.*\\/, "");
+    // .split('/')[
+    //     document.querySelector('input[name="avatar"]').value.split('/').length - 1
+    // ];
 
-    const response = await fetch(`/api/items`, {
+    const formData = new FormData();
+    formData.append("item_name", item_name.value);
+    formData.append("item_description", item_description.value);
+    formData.append("inventory", inventory.value);
+    formData.append("category_id", category_id.value);
+    for (let i = 0; i < files.files.length; i++) {
+        formData.append("item_image", files.files[0]);
+    }
+    // formData.append("item_image", files.filename);
+console.log(category_id.value);
+    console.log(files.files[0]);
+    const response =  
+    fetch(`/api/items`, {
         method: 'POST',
-        body: JSON.stringify({
-            item_name,
-            item_description,
-            inventory,
-            // user_id: req.session.user_id,
-            category_name
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+        // headers: {
+        //     'Content-Type': 'multipart/form-data'
+        // },
+        body: formData
+        // JSON.stringify({ 
+        //     item_name,
+        //     item_description,
+        //     inventory,
+        //     // user_id: req.session.user_id,
+        //     category_name,
+        //     item_image
+        // })        
+    })
+        .then((res) => console.log(res))
+        .catch((err) => ("Error occured", err));
 
     if (response.ok) {
         document.location.replace('/dashboard');
@@ -36,8 +53,5 @@
         alert(response.statusText);
     }
 }
-// ));
 
-
-document.querySelector('.new-item-form').addEventListener('submit', newFormHandler);
-// module.exports = router;
+form.addEventListener('submit', newFormHandler);
