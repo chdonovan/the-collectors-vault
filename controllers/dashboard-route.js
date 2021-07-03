@@ -79,6 +79,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+
 router.get('/', (req, res) => {
     Category.findAll({
         attributes: ['id', 'category_name']
@@ -95,7 +96,6 @@ router.get('/', (req, res) => {
     });
 
 });
-
 
 
 module.exports = router;
