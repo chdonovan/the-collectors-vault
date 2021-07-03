@@ -53,4 +53,4 @@ Item.hasMany(Comment, {
 
 
 
-module.exports = { Item, User, Category };
+module.exports = { Item, User, Category, Comment };
