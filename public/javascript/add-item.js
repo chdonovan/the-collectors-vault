@@ -26,8 +26,8 @@ function newFormHandler(event) {
         formData.append("item_image", files.files[0]);
     }
     // formData.append("item_image", files.filename);
-    
-console.log(category_id.value);
+
+    console.log(category_id.value);
     console.log(files.files[0]);
     // const response =  
     fetch(`/api/items`, {
@@ -52,10 +52,10 @@ console.log(category_id.value);
             } else {
                 alert(res.statusText);
             }
-        }) 
+        })
         .catch((err) => ("Error occured", err));
 
-    
+
 }
 
 form.addEventListener('submit', newFormHandler);
