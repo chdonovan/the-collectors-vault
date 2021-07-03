@@ -1,38 +1,115 @@
+<div id="modal-ter" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Add to your collection!</p>
+            <button class="modal-close delete is-large" aria-label="close">
+            </button>
+        </header>
+        <section class="modal-card-body">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <form id="form" class="new-item-form">
+                        <div class="field">
+                            <label class="label" for="item-title">Title</label>
+                            <div class="control">
+                                <input class="input" type="text" id="item-title" name="item-title" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="item-text">Item Description</label>
+                            <div class="control">
+                                <input class="input" type="text" id="item-text" name="item-text" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="item-inventory">Inventory</label>
+                            <div class="control">
+                                <input class="input" type="text" id="item-inventory" name="item-inventory" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Category</label>
+                            <div class="control">
+                                <input class="input" type="text" name="category" id="category"
+                                    placeholder="Reference Categories Page" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for='files'>Select File</label>
+                            <input id='files' type='file' single>
+                            {{!-- <form action="/profile" method="post" enctype="multipart/form-data">
+                                <input type="file" name="avatar" />
+                            </form> --}}
+                        </div>
+                        {{!-- <button class="submit-btn" type='submit'>Upload</button> --}}
+                        <div class="control">
+                            <button class="button is-link" type="submit" class="btn">Create</button>
+                        </div>
+
+                </div>
+                </form>
+            </div>
+    </div>
+    </section>
+    {{!-- <footer class="control modal-card-foot">
+        <button class="button is-link" type="submit" class="btn">Create</button>
+    </footer> --}}
+</div>
+</div>
+
+
+
+<button class="button is-link modal-button" id="lanuchModal">
+    Add to your collection!
+</button>
+
 {{#if items.length}}
 <section>
-    <h2>Your Collection</h2>
-    <ol>
+    <h2 class="title is-2">Your Collection</h2>
+    <div class="columns is-multiline is-desktop">
         {{#each items as |item|}}
-        <li>
-            {{!-- add helper --}}
-            {{> item-info item}}
-            <a href="/dashboard/edit/{{item.id}}" class="edit-link">Edit Item</a>
-        </li>
+        <div class="column is-3">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="{{item_image}}"
+                            alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">{{item_name}}</p>
+                            <p class="subtitle is-6">{{category.category_name}} 
+                                <br> Owned by: {{ user.username}}</p>
+                            
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        {{item_description}}
+                        <br>
+                        Inventory: {{inventory}}
+                        <br>
+                        
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="/dashboard/edit/{{item.id}}" class="card-footer-item button is-warning edit-link">Edit</a>
+                </footer>
+            </div>
+        </div>
         {{/each}}
-    </ol>
+    </div>
 </section>
 {{/if}}
 
-<section>
-    <h2>Add to your collection!</h2>
-
-    <form class="new-item-form">
-        <div>
-            <label for="item-title">Title</label>
-            <input type="text" id="item-title" name="item-title" />
-        </div>
-        <div>
-            <label for="item-text">Item Description</label>
-            <input type="text" id="item-text" name="item-text" />
-        </div>
-        <div>
-            <label for="item-inventory">Inventory</label>
-            <input type="text" id="item-inventory" name="item-inventory" />
-        </div>
-        <button type="submit" class="btn">Create</button>
-    </form>
-</section>
-
-
 
 <script src="/javascript/add-item.js"></script>
+<script src="/javascript/modal.js"></script>

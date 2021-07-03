@@ -1,35 +1,52 @@
-
 <!--login form template -->
-<form class="login-form">
-  <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <form class="login-form">
+      <div class="field">
+        <label class="label" for="email-login">Email:</label>
+        <div class="control">
+          <input class="input" type="text" id="email-login" placeholder="e.g. alexsmith@gmail.com" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="password-login">Password:</label>
+        <div class="control">
+          <input class="input" type="password" id="password-login" />
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-link" type="submit">Login</button>
+      </div>
+    </form>
   </div>
-  <div>
-    <label for="password-login">password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">login</button>
-  </div>
-</form>
+</div>
 
 <!--signUp form template -->
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <form class="signup-form">
+      <div class="field">
+        <label class="label" for="username-signup">Username:</label>
+        <div class="control">
+          <input class="input" type="text" id="username-signup" placeholder="e.g. alex123" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="email-signup">Email:</label>
+        <div class="control">
+          <input class="input" type="text" id="email-signup" placeholder="e.g. alexsmith@gmail.com" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="password-signup">Password:</label>
+        <div class="control">
+          <input class="input" type="password" id="password-signup" />
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-link" type="submit">signup</button>
+      </div>
+    </form>
   </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-</form>
+</div>
 <script src='/javascript/login.js'></script>

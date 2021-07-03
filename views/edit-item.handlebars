@@ -1,0 +1,43 @@
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <form class="edit-item-form">
+            <div class="field">
+                <label class="label" for="item-title">Title</label>
+                <div class="control">
+                    <input class="input" type="text" id="item-title" name="item-title" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="item-text">Item Description</label>
+                <div class="control">
+                    <input class="input" type="text" id="item-text" name="item-text" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="item-inventory">Inventory</label>
+                <div class="control">
+                    <input class="input" type="text" id="item-inventory" name="item-inventory" />
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Category</label>
+                <div class="control">
+                    <input class="input" type="text" name="category" id="category"
+                        placeholder="Reference Categories Page" />
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <p class="control">
+                    <button class="button is-link" type="submit" class="btn">Update</button>
+                </p>
+                <p class="control">
+                    <button class="button is-danger delete-post-btn" type="submit" class="btn">Delete</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="/javascript/edit-item.js"></script>
+<script src="/javascript/delete-item.js"></script>

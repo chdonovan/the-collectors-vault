@@ -1,18 +1,28 @@
-/* * {
+* {
     box-sizing: border-box;
+    padding: 5px;
 }
 
-body,
+body {
+  background-color: azure;
+  padding: 20px
+}
+
+#category-list{
+  padding: 10px;
+  font-size: large;
+}
+
+/* body,
 html {
     height: 100%;
     padding: 0;
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color:white;
-} */
+}  */
 
-
-* {
+/* * {
     box-sizing: border-box;
   }
   
@@ -177,11 +187,11 @@ html {
   
   .new-post-form input {
     width: 300px;
-  }
+  } */
   
-  .edit-post-form {
+  /* .edit-post-form {
     margin-bottom: 5%;
-  }
+  } */
   
   footer {
     border-top: 1px solid #ccc;

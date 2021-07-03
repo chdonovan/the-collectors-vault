@@ -6,41 +6,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Collector's Vault</title>
-  <!-- Bootstrap CSS -->
-  {{!--
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </head>
 
-<body>
-  <nav class="navbar navbar-lg navbar-white bg-white">
-    <div class="container">
-      <a class="navbar-brand"></a>
-      <button class="navbar-toggler" type="button" data="collapse">
-        <span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="/" class="nav-link active">Home</a>
-          </li>
-          {{#if loggedIn}}
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <button id="logout" class="btn-no-style">Logout</button>
-          </li>
-          {{else}}
-          <li class="nav-item">
-            <a href="/login">login</a>
-            {{!-- <button id="login" class="btn-no-style" href="/login">Login</button> --}}
-          </li>
-          {{/if}}
-        </ul>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  {{!-- <div class="navbar-brand">
+    <img src="/assets/logo.PNG" width="112" height="28">
+  </div> --}}
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a href="/" class="navbar-item">
+        Home
+      </a>
+      {{#if loggedIn}}
+      <a href="/dashboard" class="navbar-item">
+        Dashboard
+      </a>
+      <a href="/category" class="navbar-item">
+        Categories
+      </a>
+      {{/if}}
+    </div>
+  </div>
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        {{#if loggedIn}}
+        <a id="logout" class="button is-light">
+          Logout
+        </a>
+        {{else}}
+        <a href="/login" class="button is-light">
+          Log in
+        </a>
+        {{/if}}
       </div>
     </div>
-  </nav>
+  </div>
+  </div>
+</nav>
+
+<body>
   <main>
     {{{ body }}}
   </main>

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Item, Category, User } = require('../models');
+const { truncate } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -13,7 +14,8 @@ router.get('/', withAuth, (req, res) => {
             'item_description',
             'inventory',
             'category_id',
-            'user_id'
+            'user_id',
+            'item_image'
         ],
         include: [
             {
@@ -37,5 +39,63 @@ router.get('/', withAuth, (req, res) => {
         res.status(500).json(err);
     });
 });
+
+router.get('/edit/:id', withAuth, (req, res) => {
+    Item.findByPk(req.params.id, {
+        attributes: [
+            'id',
+            'item_name',
+            'item_description',
+            'inventory',
+            'category_id',
+            'user_id',
+            'item_image'
+        ],
+        include: [
+            {
+                model: Category, 
+                attributes: ['category_name']
+            },
+            {
+                model: User, 
+                attributes: ['username']
+            }
+        ]
+    })
+    .then (dbItemData => {
+        if(dbItemData) {
+            const item =dbItemData.get({plain: true });
+
+            res.render('edit-item', {
+                item, 
+                loggedIn: true
+            });
+        } else {
+            res.status(400).end();
+        }
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    });
+});
+
+
+router.get('/', (req, res) => {
+    Category.findAll({
+        attributes: ['id', 'category_name']
+    })
+    .then(dbCategoryData => {
+        const categories = dbCategoryData.map(category =>category.get({ plain: true}));
+        res.render('dashboard', {
+            categories,
+            loggedIn: true});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+
+});
+
 
 module.exports = router;

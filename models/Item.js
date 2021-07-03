@@ -27,6 +27,10 @@ Item.init(
                 isNumeric: true
             }
         },
+        item_image: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         category_id: {
             type: DataTypes.INTEGER,
             references: {
