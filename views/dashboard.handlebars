@@ -73,7 +73,7 @@
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                        <img src="https://localhost:3001/uploads/2021-07-02T12-08-21.874ZShiro.jpg"
+                        <img src="{{item_image}}"
                             alt="Placeholder image">
                     </figure>
                 </div>
@@ -86,7 +86,9 @@
                         </div>
                         <div class="media-content">
                             <p class="title is-4">{{item_name}}</p>
-                            <p class="subtitle is-6"></p>
+                            <p class="subtitle is-6">{{category.category_name}} 
+                                <br> Owned by: {{ user.username}}</p>
+                            
                         </div>
                     </div>
 
@@ -95,7 +97,7 @@
                         <br>
                         Inventory: {{inventory}}
                         <br>
-                        <time>{{created_at}}</time>
+                        
                     </div>
                 </div>
                 <footer class="card-footer">

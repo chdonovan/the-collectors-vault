@@ -37,14 +37,14 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static('/uploads'));
+app.use('/uploads', express.static('uploads'));
 
 // turn on routes
 // app.use(routes);
 
 app.use(require('./controllers/'));
 
-app.use(require('./controllers/'));
+// app.use(require('./controllers/'));
 
 // turns on local server
 sequelize.sync({ force: false }).then(() => {

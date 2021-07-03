@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
         'item_description',
         'inventory',
         'category_id',
-        'user_id'
+        'user_id',
+        'item_image'
       ],
       include: [
         {

@@ -26,9 +26,10 @@ function newFormHandler(event) {
         formData.append("item_image", files.files[0]);
     }
     // formData.append("item_image", files.filename);
+    
 console.log(category_id.value);
     console.log(files.files[0]);
-    const response =  
+    // const response =  
     fetch(`/api/items`, {
         method: 'POST',
         // headers: {
@@ -44,14 +45,17 @@ console.log(category_id.value);
         //     item_image
         // })        
     })
-        .then((res) => console.log(res))
+        .then((res) => {
+            console.log(res)
+            if (res.ok) {
+                document.location.replace('/dashboard');
+            } else {
+                alert(res.statusText);
+            }
+        }) 
         .catch((err) => ("Error occured", err));
 
-    if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert(response.statusText);
-    }
+    
 }
 
 form.addEventListener('submit', newFormHandler);

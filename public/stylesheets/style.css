@@ -1,10 +1,16 @@
 * {
     box-sizing: border-box;
+    padding: 5px;
 }
 
 body {
   background-color: azure;
   padding: 20px
+}
+
+#category-list{
+  padding: 10px;
+  font-size: large;
 }
 
 /* body,

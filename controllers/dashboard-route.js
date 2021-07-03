@@ -14,7 +14,8 @@ router.get('/', withAuth, (req, res) => {
             'item_description',
             'inventory',
             'category_id',
-            'user_id'
+            'user_id',
+            'item_image'
         ],
         include: [
             {
@@ -47,7 +48,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
             'item_description',
             'inventory',
             'category_id',
-            'user_id'
+            'user_id',
+            'item_image'
         ],
         include: [
             {
@@ -77,7 +79,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
-<<<<<<< HEAD
+
 router.get('/', (req, res) => {
     Category.findAll({
         attributes: ['id', 'category_name']
@@ -95,6 +97,4 @@ router.get('/', (req, res) => {
 
 });
 
-=======
->>>>>>> 69bb14b5034d1e7e125811ab185fcef5999c50d5
 module.exports = router;
