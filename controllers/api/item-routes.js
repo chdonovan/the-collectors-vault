@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Item, Category } = require('../../models');
+const { User, Item, Category, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
 
@@ -45,6 +45,14 @@ router.get('/', (req, res) => {
                 attributes: ['id', 'category_name']
             },
             {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
                 model: User,
                 attributes: ['username']
             }
@@ -75,6 +83,14 @@ router.get('/:id', (req, res) => {
             {
                 model: Category,
                 attributes: ['category_name']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
             },
             {
                 model: User,
