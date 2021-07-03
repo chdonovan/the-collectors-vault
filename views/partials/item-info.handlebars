@@ -14,17 +14,19 @@
                 <img src="{{item_image}}" alt="Placeholder image">
             </figure>
         </div>
-        <div class="card-content is-success is-light">
+        <div class="card-content">
             <div class="media">
-                {{!-- <div class="media-left">
+                <div class="media-left">
                     <figure class="image is-48x48">
                         <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                     </figure>
-                </div> --}}
+                </div>
                 <div class="media-content">
                     <p class="title is-4">{{item_name}}</p>
-                    <p class="subtitle is-5">{{category.category_name}}</p>
-                    <p class="subtitle is-6">Owned by: {{ user.username}}</p>
+                    <p class="subtitle is-6">{{category.category_name}}
+                        <br> Owned by: {{ user.username}}
+                    </p>
+
                 </div>
             </div>
 
@@ -32,6 +34,8 @@
                 {{item_description}}
                 <br>
                 Inventory: {{inventory}}
+                <br>
+
             </div>
         </div>
     </div>
