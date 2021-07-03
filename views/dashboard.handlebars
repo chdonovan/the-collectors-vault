@@ -86,7 +86,9 @@
                         </div>
                         <div class="media-content">
                             <p class="title is-4">{{item_name}}</p>
-                            <p class="subtitle is-6">{{category.category_name}}</p>
+                            <p class="subtitle is-6">{{category.category_name}} 
+                                <br> Owned by: {{ user.username}}</p>
+                            
                         </div>
                     </div>
 
@@ -95,7 +97,7 @@
                         <br>
                         Inventory: {{inventory}}
                         <br>
-                        <time>{{created_at}}</time>
+                        
                     </div>
                 </div>
                 <footer class="card-footer">

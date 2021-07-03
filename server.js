@@ -44,7 +44,7 @@ app.use('/uploads', express.static('uploads'));
 
 app.use(require('./controllers/'));
 
-app.use(require('./controllers/'));
+// app.use(require('./controllers/'));
 
 // turns on local server
 sequelize.sync({ force: false }).then(() => {
