@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Item, Category, User } = require('../models');
+const { Item, Category, User, Comment } = require('../models');
 const { truncate } = require('../models/User');
 const withAuth = require('../utils/auth');
 

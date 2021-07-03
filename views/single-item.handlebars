@@ -1,4 +1,38 @@
-{{> item-info item}}
+{{!-- {{> item-info item}} --}}
+
+<div class="column is-3">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image is-4by3">
+                <img src="uploads/2021-07-03T23-09-20.078ZKitty.jpg" alt="Placeholder image">
+            </figure>
+        </div>
+        <div class="card-content is-success is-light">
+            <div class="media">
+                {{!-- <div class="media-left">
+                    <figure class="image is-48x48">
+                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                    </figure>
+                </div> --}}
+                <div class="media-content">
+                    <p class="title is-4">{{item.item_name}}</p>
+                    <p class="subtitle is-6">{{category.category_name}}
+                        <br> Owned by: {{ user.username}}
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="content">
+                {{item.item_description}}
+                <br>
+                Inventory: {{item.inventory}}
+                <br>
+                <a href="/item/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -7,7 +41,7 @@
   </div>
 
   <div>
-    <button type="submit">add comment</button>
+    <button type="submit">Add Comment</button>
   </div>
 </form>
 {{/if}}
