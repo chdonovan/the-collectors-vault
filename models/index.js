@@ -4,6 +4,7 @@
 const User = require('./User');
 const Category = require('./Category');
 const Item = require('./Item');
+const Comment = require('./Comment');
 //const { Model } = require('sequelize/types');
 
 //create associations
@@ -27,6 +28,26 @@ Item.belongsTo(User,{
 
 User.hasMany(Item, {
     foreignKey: 'user_id',
+});
+
+Comment.belongsTo(User, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    foreignKey: 'user_id'
+});
+
+Comment.belongsTo(Item, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    foreignKey: 'item_id'
+});
+
+User.hasMany(Comment, {
+    foreignKey: 'user_id'
+});
+
+Item.hasMany(Comment, {
+    foreignKey: 'item_id'
 });
 
 
