@@ -106,7 +106,7 @@ router.post('/', upload.single('item_image'), (req, res) => {
         category_id: req.body.category_id,
         user_id: req.session.user_id,
         // item_image: req.body.item_image
-        item_image: req.file.path.replace(/\//g, 'ForwardSlash')
+        item_image: !!req.file ? req.file.path.replace(/\//g, 'ForwardSlash') : null
     })
         .then(dbItemData =>
             // req.session.save(() => {
