@@ -3,8 +3,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Add to your collection!</p>
-            <button class="modal-close delete is-large" aria-label="close">
-            </button>
+            <button class="modal-close delete is-large" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
             <div class="columns">
@@ -38,25 +37,17 @@
                         <div class="field">
                             <label id="is-small" for='files'>Select Image: File must be a jpeg, png or jpg! </label>
                             <input id='files' type='file' single>
-                            {{!-- <form action="/profile" method="post" enctype="multipart/form-data">
-                                <input type="file" name="avatar" />
-                            </form> --}}
                         </div>
-                        {{!-- <button class="submit-btn" type='submit'>Upload</button> --}}
                         <div class="control">
                             <button class="button is-link" type="submit" class="btn">Create</button>
                         </div>
-
+                    </form>
                 </div>
-                </form>
             </div>
+        </section>
     </div>
-    </section>
-    {{!-- <footer class="control modal-card-foot">
-        <button class="button is-link" type="submit" class="btn">Create</button>
-    </footer> --}}
 </div>
-</div>
+
 
 
 
@@ -73,8 +64,7 @@
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                        <img src="{{item_image}}"
-                            alt="Placeholder image">
+                        <img src="{{item_image}}" alt="Placeholder image">
                     </figure>
                 </div>
                 <div class="card-content">
@@ -86,18 +76,16 @@
                         </div>
                         <div class="media-content">
                             <p class="title is-4">{{item_name}}</p>
-                            <p class="subtitle is-6">{{category.category_name}} 
-                                <br> Owned by: {{ user.username}}</p>
-                            
+                            <p class="subtitle is-6">{{category.category_name}}
+                                <br> Owned by: {{ user.username}}
+                            </p>
                         </div>
                     </div>
-
                     <div class="content">
                         {{item_description}}
                         <br>
                         Inventory: {{inventory}}
                         <br>
-                        
                     </div>
                 </div>
                 <footer class="card-footer">
