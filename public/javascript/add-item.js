@@ -56,6 +56,6 @@ function newFormHandler(event) {
         .catch((err) => ("Error occured", err));
 
 
-
+    }
 
 form.addEventListener('submit', newFormHandler);
