@@ -3,6 +3,7 @@ const { User, Item, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
 
+//Create file storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "./uploads/");
@@ -11,7 +12,7 @@ const storage = multer.diskStorage({
         cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
     }
 });
-
+//Define a filter 
 const fileFilter = (req, file, cb) => {
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         cb(null, true);
@@ -106,7 +107,7 @@ router.post('/', upload.single('item_image'), (req, res) => {
         category_id: req.body.category_id,
         user_id: req.session.user_id,
         // item_image: req.body.item_image
-        item_image: !!req.file ? req.file.path.replace(/\//g, 'ForwardSlash') : null
+        item_image: !!req.file ? req.file.path.replace(/\//g, '/') : null
     })
         .then(dbItemData =>
             // req.session.save(() => {
