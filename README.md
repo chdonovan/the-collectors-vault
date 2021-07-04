@@ -5,7 +5,7 @@ A site for manageing your collections.
 Conatains basic CRUD functionality
 
 ## Deployed
-https://dashboard.heroku.com/apps/the-collectors-vault
+https://the-collectors-vault.herokuapp.com/
 
 ## Screenshot
 
