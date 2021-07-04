@@ -73,7 +73,7 @@ router.put('/:id', (req, res) => {
 
 });
 
-// DELETE category
+// DELETE category by id
 router.delete('/:id', (req, res) => {
     Category.destroy({
         where: {

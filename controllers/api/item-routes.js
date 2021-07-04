@@ -108,7 +108,8 @@ router.post('/', upload.single('item_image'), (req, res) => {
         inventory: req.body.inventory,
         category_id: req.body.category_id,
         user_id: req.session.user_id,
-        item_image: !!req.file ? req.file.path.replace(/\//g, 'ForwardSlash') : null
+        // item_image: req.body.item_image
+        item_image: !!req.file ? req.file.path.replace(/\//g, '/') : null
     })
         .then(dbItemData =>
             res.json(dbItemData))
