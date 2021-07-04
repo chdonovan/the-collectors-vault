@@ -79,8 +79,6 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-=======
 
 router.get('/', (req, res) => {
     Category.findAll({
@@ -99,5 +97,4 @@ router.get('/', (req, res) => {
 
 });
 
->>>>>>> 4067cc4eff03447682a2278b83f600191fd0dc97
 module.exports = router;
