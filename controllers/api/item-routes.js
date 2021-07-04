@@ -3,6 +3,8 @@ const { User, Item, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
 
+
+//Set up store for uploaded files
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "./uploads/");
@@ -12,14 +14,16 @@ const storage = multer.diskStorage({
     }
 });
 
+//Set up filters for file types
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg') {
         cb(null, true);
     } else {
-        cb(null, false);
+        cb(new Error('Only images are allowed'), false)
     }
 }
 
+//Set up upload property limits
 const upload = multer({
     storage: storage,
     limits: {
@@ -28,7 +32,7 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-// GET All Items /api/collections
+// GET all items
 router.get('/', (req, res) => {
     Item.findAll({
         attributes: [
@@ -57,7 +61,7 @@ router.get('/', (req, res) => {
         });
 });
 
-// GET Item by ID
+// GET item by ID
 router.get('/:id', (req, res) => {
     Item.findOne({
         where: {
@@ -95,8 +99,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// POST Create an Item /api/items
-// withAuth,
+// CREATE a new item
 router.post('/', upload.single('item_image'), (req, res) => {
     console.log(req.file);
     Item.create({
@@ -105,26 +108,17 @@ router.post('/', upload.single('item_image'), (req, res) => {
         inventory: req.body.inventory,
         category_id: req.body.category_id,
         user_id: req.session.user_id,
-        // item_image: req.body.item_image
         item_image: !!req.file ? req.file.path.replace(/\//g, 'ForwardSlash') : null
     })
         .then(dbItemData =>
-            // req.session.save(() => {
-            //     req.session.user_id = dbUserData.id;
-            //     req.session.username = dbUserData.username;
-            //     req.session.loggedIn = true;
-
-            //     res.json(dbUserData);
-            // });
             res.json(dbItemData))
-        // })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// PUT Update Items by ID /api/items/1
+// UPDATE item by id
 router.put('/:id', withAuth, (req, res) => {
     Item.update(
         {
@@ -158,7 +152,7 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
-// DELETE Delete Items /api/items/1
+// DELETE item by id
 router.delete('/:id', withAuth, (req, res) => {
     Item.destroy({
         where: {
