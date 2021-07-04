@@ -9,6 +9,11 @@ function newFormHandler(event) {
     const inventory = document.querySelector('input[name="item-inventory"]')//.value;
     // const user_id = req.session.user_id;
     const category_id = document.querySelector('input[name="category"]')//.value;
+    if (isNaN(category_id))
+    {
+        alert("Category ID must be a number reference Categories Page");
+        return false;
+    }
     const files = document.getElementById("files");
 
     // var path = document.querySelector('input[name="avatar"]').value
