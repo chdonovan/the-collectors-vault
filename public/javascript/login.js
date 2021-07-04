@@ -1,4 +1,4 @@
-// signup
+//Signup Function
 async function signupFormHandler(event) {
   event.preventDefault();
 
@@ -6,6 +6,7 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
+  //Require a username, email and password to create a new user
   if (username && email && password) {
     const response = await fetch('/api/users', {
       method: 'post',
@@ -16,7 +17,7 @@ async function signupFormHandler(event) {
       }),
       headers: { 'Content-Type': 'application/json' }
     });
-    // check the response status
+    //If correct inputs redirect to homepage
     if (response.ok) {
       document.location.replace('/');
     } else {
@@ -24,13 +25,14 @@ async function signupFormHandler(event) {
     }
   }
 }
-// login
+//Login Function
 async function loginFormHandler(event) {
   event.preventDefault();
 
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
+  //Require a username and email to login 
   if (email && password) {
     const response = await fetch('/api/users/login', {
       method: 'post',
@@ -41,6 +43,7 @@ async function loginFormHandler(event) {
       headers: { 'Content-Type': 'application/json' }
     });
 
+    //If correct inputs redirect to homepage
     if (response.ok) {
       document.location.replace('/');
     } else {

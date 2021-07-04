@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { Item, Category, User } = require('../models');
-const { truncate } = require('../models/User');
 const withAuth = require('../utils/auth');
 
+//Get all items to render to dashboard handlebars
 router.get('/', withAuth, (req, res) => {
     Item.findAll({
         where: {
@@ -19,27 +19,29 @@ router.get('/', withAuth, (req, res) => {
         ],
         include: [
             {
-                model: Category, 
+                model: Category,
                 attributes: ['category_name']
             },
             {
-                model: User, 
+                model: User,
                 attributes: ['username']
             }
         ]
     })
-    .then(dbItemData => {
-        const items = dbItemData.map(item =>item.get({ plain: true}));
-        res.render('dashboard', {
-            items,
-            loggedIn: true});
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbItemData => {
+            const items = dbItemData.map(item => item.get({ plain: true }));
+            res.render('dashboard', {
+                items,
+                loggedIn: true
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
+//Get item by id to render on edit-items handlebars
 router.get('/edit/:id', withAuth, (req, res) => {
     Item.findByPk(req.params.id, {
         attributes: [
@@ -53,47 +55,48 @@ router.get('/edit/:id', withAuth, (req, res) => {
         ],
         include: [
             {
-                model: Category, 
+                model: Category,
                 attributes: ['category_name']
             },
             {
-                model: User, 
+                model: User,
                 attributes: ['username']
             }
         ]
     })
-    .then (dbItemData => {
-        if(dbItemData) {
-            const item =dbItemData.get({plain: true });
+        .then(dbItemData => {
+            if (dbItemData) {
+                const item = dbItemData.get({ plain: true });
 
-            res.render('edit-item', {
-                item, 
-                loggedIn: true
-            });
-        } else {
-            res.status(400).end();
-        }
-    })
-    .catch(err => {
-        res.status(500).json(err);
-    });
+                res.render('edit-item', {
+                    item,
+                    loggedIn: true
+                });
+            } else {
+                res.status(400).end();
+            }
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        });
 });
 
-
+//GET all categories to render to dashboard
 router.get('/', (req, res) => {
     Category.findAll({
         attributes: ['id', 'category_name']
     })
-    .then(dbCategoryData => {
-        const categories = dbCategoryData.map(category =>category.get({ plain: true}));
-        res.render('dashboard', {
-            categories,
-            loggedIn: true});
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbCategoryData => {
+            const categories = dbCategoryData.map(category => category.get({ plain: true }));
+            res.render('dashboard', {
+                categories,
+                loggedIn: true
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 
 });
 
