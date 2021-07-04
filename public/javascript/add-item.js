@@ -26,13 +26,8 @@ function newFormHandler(event) {
         formData.append("item_image", files.files[0]);
     }
     // formData.append("item_image", files.filename);
-<<<<<<< HEAD
-    
-console.log(category_id.value);
-=======
 
     console.log(category_id.value);
->>>>>>> develop
     console.log(files.files[0]);
     // const response =  
     fetch(`/api/items`, {
@@ -57,17 +52,10 @@ console.log(category_id.value);
             } else {
                 alert(res.statusText);
             }
-<<<<<<< HEAD
-        }) 
-        .catch((err) => ("Error occured", err));
-
-    
-=======
         })
         .catch((err) => ("Error occured", err));
 
 
->>>>>>> develop
 }
 
 form.addEventListener('submit', newFormHandler);
