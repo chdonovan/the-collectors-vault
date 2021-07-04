@@ -14,7 +14,8 @@ router.get('/', withAuth, (req, res) => {
             'item_description',
             'inventory',
             'category_id',
-            'user_id'
+            'user_id',
+            'item_image'
         ],
         include: [
             {
@@ -47,7 +48,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
             'item_description',
             'inventory',
             'category_id',
-            'user_id'
+            'user_id',
+            'item_image'
         ],
         include: [
             {
@@ -77,4 +79,25 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+<<<<<<< HEAD
+=======
+
+router.get('/', (req, res) => {
+    Category.findAll({
+        attributes: ['id', 'category_name']
+    })
+    .then(dbCategoryData => {
+        const categories = dbCategoryData.map(category =>category.get({ plain: true}));
+        res.render('dashboard', {
+            categories,
+            loggedIn: true});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+
+});
+
+>>>>>>> 4067cc4eff03447682a2278b83f600191fd0dc97
 module.exports = router;

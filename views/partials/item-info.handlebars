@@ -11,7 +11,7 @@
     <div class="card">
         <div class="card-image">
             <figure class="image is-4by3">
-                <img src="`http://localhost:3001/uploads/{{item_image}}" alt="Placeholder image">
+                <img src="{{item_image}}" alt="Placeholder image">
             </figure>
         </div>
         <div class="card-content is-success is-light">
@@ -23,8 +23,10 @@
                 </div> --}}
                 <div class="media-content">
                     <p class="title is-4">{{item_name}}</p>
-                    <p class="subtitle is-5">{{category.category_name}}</p>
-                    <p class="subtitle is-6">Owned by: {{ user.username}}</p>
+                    <p class="subtitle is-6">{{category.category_name}}
+                        <br> Owned by: {{ user.username}}
+                    </p>
+
                 </div>
             </div>
 
@@ -32,6 +34,8 @@
                 {{item_description}}
                 <br>
                 Inventory: {{inventory}}
+                <br>
+
             </div>
         </div>
     </div>
