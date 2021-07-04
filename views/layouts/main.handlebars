@@ -9,16 +9,23 @@
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  {{!--
+  <link href="./public/stylesheets/style.css/css/fontawesome.css" rel="stylesheet"> --}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
-<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary is-mobile" role="navigation" aria-label="main navigation">
   {{!-- <div class="navbar-brand">
     <img src="/assets/logo.PNG" width="112" height="28">
   </div> --}}
+  <a class="navbar-burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="nav-links" class="navbar-menu">
     <div class="navbar-start">
       <a href="/" class="navbar-item">
         Home
@@ -33,7 +40,7 @@
       {{/if}}
     </div>
   </div>
-  </div>
+
 
   <div class="navbar-end">
     <div class="navbar-item">
@@ -61,5 +68,7 @@
   <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
+
+<script src="/javascript/nav.js"></script>
 
 </html>

@@ -1,15 +1,40 @@
 * {
     box-sizing: border-box;
-    padding: 5px;
+    padding: 5px;   
+}
+
+
+nav {
+  width: 100%
 }
 
 body {
+  /* background-image: url(/public/assets/Background.jpg); */
   background-color: azure;
   padding: 20px
 }
 
+#collection-header {
+  margin: 0px 0px 20px 0px; 
+}
 #category-list{
   padding: 10px;
+  margin: 0px 0px 0px 30px;
   font-size: large;
+  
 }
+
+#add-category {
+  padding: 20px 0px 0px 0px;
+
+}
+
+#category-title {
+  text-align: center;
+}
+
+.image-label {
+  font-size: 11px;
+}
+
 
