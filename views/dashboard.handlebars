@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Category</label>
+                            <label class="label">Category: Must be a number!</label>
                             <div class="control">
                                 <input class="input" type="text" name="category" id="category"
                                     placeholder="Reference Categories For ID" />
@@ -50,14 +50,24 @@
 
 
 
+<section class="hero is-small is-link" id="collection-header">
+  <div class="hero-body has-text-centered">
+    <p class="title">
+      Your Collection
+    </p>
+    <p class="subtitle">
+      Your collection all it one place!
+    </p>
+  </div>
+</section>
 
-<button class="button is-link modal-button" id="lanuchModal">
+<button class="button is-success modal-button" id="lanuchModal">
     Add to your collection!
 </button>
 
 {{#if items.length}}
 <section>
-    <h2 class="title is-2">Your Collection</h2>
+    {{!-- <h2 class="title is-2">Your Collection</h2> --}}
     <div class="columns is-multiline is-desktop">
         {{#each items as |item|}}
         <div class="column is-3">
@@ -71,7 +81,7 @@
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-48x48">
-                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                <img src="/assets/User.PNG" alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="media-content">

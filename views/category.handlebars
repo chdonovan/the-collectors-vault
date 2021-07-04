@@ -1,8 +1,20 @@
-<h2 class="title is-2">Add a category</h2>
-<div class="columns is-mobile">
+{{!-- <h2 class="title is-2">Add a category</h2> --}}
+<section class="hero is-small is-link">
+  <div class="hero-body has-text-centered">
+    <p class="title">
+      Categories
+    </p>
+    <p class="subtitle">
+      Select a category that fits your collection. <br>
+      Can't find one, add a new category that fits your collection. 
+    </p>
+  </div>
+</section>
+
+<div class="columns is-mobile" id="add-category">
     <form class="box column is-three-fifths is-offset-one-fifth" id="category-form">
         <div class="field">
-            <label class="label">Name</label>
+            <label class="label">Category Name</label>
             <div class="control">
                 <input class="input" type="text" name="category_name" placeholder="Text input">
             </div>
@@ -14,7 +26,7 @@
 </div>
 <div class="columns is-mobile">
     <div class="box column is-three-fifths is-offset-one-fifth">
-        <h2 class="is-2">Current Categories</h2>
+        <h2 class="title is-2" id="category-title">Current Categories</h2>
         <ol>
             {{#each categories as |category|}}
             <li id="category-list"> {{category_name}}</li>

@@ -7,11 +7,6 @@ function newFormHandler(event) {
     const item_description = document.querySelector('input[name="item-text"]')
     const inventory = document.querySelector('input[name="item-inventory"]')
     const category_id = document.querySelector('input[name="category"]')
-    if (isNaN(category_id))
-    {
-        alert("Category ID must be a number reference Categories Page");
-        return false;
-    }
     const files = document.getElementById("files");
 
 
