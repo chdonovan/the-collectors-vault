@@ -1,12 +1,30 @@
-# my-collections
+# The Collectors Vault
 
-## Dependencies
-- Node.js
-- Express.js
-- Handlebars.js
-- MySQL
+## Description
+A site for manageing your collections.
+Conatains basic CRUD functionality
+
+## Deployed
+https://dashboard.heroku.com/apps/the-collectors-vault
+
+## Screenshot
+
+## Dependencies:
+- Bcrypt
+- Dotenv
+- Express-handlebars
+-  Express-sessions
+- Connect-session-sequelize
+- Mysql2
 - Sequelize
+- Multer
 
-- TBD
+## Contributors
+- Dani Hartley
+- Chris Donovan
+- Jose Molina
+- Sonya Rangraj
 
-An app used to manage your collections
+## GitHub
+https://github.com/chdonovan/the-collectors-vault
+
