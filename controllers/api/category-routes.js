@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {User, Item, Category } = require('../../models');
 
-// Get Category /api/category
+// Get all Categories /api/category
 router.get('/', (req, res) => {
     Category.findAll({
         attributes: ['id', 'category_name']
@@ -35,7 +35,7 @@ router.get('/:id', (req,res) => {
     });
 });
 
-// POST /api/category
+// CREATE a new Category
 router.post('/', (req,res) => {
     Category.create({
         category_name: req.body.category_name
@@ -50,7 +50,7 @@ router.post('/', (req,res) => {
 
 });
 
-// PUT update category by ID /api/category/1
+//UPDATE a category
 router.put('/:id', (req,res) => {
     Category.update(req.body, {
         where: {
@@ -73,7 +73,7 @@ router.put('/:id', (req,res) => {
     
 });
 
-// DELETE Delete category /api/category
+// DELETE a category
 router.delete('/:id', (req,res) => {
     Category.destroy({
         where: {
