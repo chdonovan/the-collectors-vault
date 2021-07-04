@@ -2,28 +2,28 @@
     <div class="column is-half is-offset-one-quarter">
         <form class="edit-item-form">
             <div class="field">
-                <label class="label" for="item-title">Title</label>
+                <label class="label" for="item-title" >Title</label>
                 <div class="control">
-                    <input class="input" type="text" id="item-title" name="item-title" />
+                    <input class="input" type="text" id="item-title" name="item-title" placeholder="{{item.item_name}}" />
                 </div>
             </div>
             <div class="field">
                 <label class="label" for="item-text">Item Description</label>
                 <div class="control">
-                    <input class="input" type="text" id="item-text" name="item-text" />
+                    <input class="input" type="text" id="item-text" name="item-text" placeholder="{{item.item_description}}" />
                 </div>
             </div>
             <div class="field">
                 <label class="label" for="item-inventory">Inventory</label>
                 <div class="control">
-                    <input class="input" type="text" id="item-inventory" name="item-inventory" />
+                    <input class="input" type="text" id="item-inventory" name="item-inventory" placeholder="{{item.inventory}}" />
                 </div>
             </div>
             <div class="field">
                 <label class="label">Category</label>
                 <div class="control">
                     <input class="input" type="text" name="category" id="category"
-                        placeholder="Reference Categories For ID" />
+                        placeholder="{{item.category_id}}:  Reference Categories For ID" />
                 </div>
             </div>
             <div class="field is-grouped">
