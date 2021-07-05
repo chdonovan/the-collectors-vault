@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label id="is-small" for='files'>Select Image: File must be a jpeg, png or jpg! </label>
+                            <label id="is-small" class="image-label" for='files'><strong>Select Image:</strong> File must be a jpeg, png or jpg! </label>
                             <input id='files' type='file' single>
                         </div>
                         <div class="control">
@@ -56,7 +56,11 @@
       Your Collection
     </p>
     <p class="subtitle">
+<<<<<<< HEAD
+      Your collection all in one place!
+=======
       Your collection all it one place!
+>>>>>>> 91552b5d63ca1c52ab54937f00fe343a6e466f73
     </p>
   </div>
 </section>
@@ -68,7 +72,7 @@
 {{#if items.length}}
 <section>
     {{!-- <h2 class="title is-2">Your Collection</h2> --}}
-    <div class="columns is-multiline is-desktop">
+    <div class="columns is-multiline is-mobile">
         {{#each items as |item|}}
         <div class="column is-3">
             <div class="card">
